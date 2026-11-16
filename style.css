@@ -1,0 +1,508 @@
+
+/* ==============================
+   GLOBAL STYLES
+============================== */
+
+:root {
+  --bg: #0b1220;
+  --surface: #172033;
+  --surface-light: #222f45;
+  --border: #2b3a50;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --danger: #ef4444;
+  --success: #22c55e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 40px 20px;
+
+  background: var(--bg);
+  color: var(--text);
+
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+.container {
+  width: 100%;
+  max-width: 1050px;
+  margin: auto;
+}
+
+/* ==============================
+   HEADER
+============================== */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+
+  width: 60px;
+  height: 60px;
+
+  background: #1e3a5f;
+  border-radius: 16px;
+
+  font-size: 30px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+.app-header p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ==============================
+   DASHBOARD STATISTICS
+============================== */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  min-width: 0;
+  padding: 22px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+
+  text-align: center;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.stat-card h3 {
+  margin: 0 0 8px;
+
+  color: #60a5fa;
+  font-size: 28px;
+
+  overflow-wrap: anywhere;
+}
+
+.stat-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ==============================
+   PANELS
+============================== */
+
+.panel {
+  margin-bottom: 25px;
+  padding: 28px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.section-heading span {
+  color: #60a5fa;
+  font-size: 22px;
+}
+
+.section-description {
+  margin: -10px 0 22px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ==============================
+   FORMS
+============================== */
+
+#workoutForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.form-group label {
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 14px;
+
+  background: #0f172a;
+  color: var(--text);
+
+  border: 1px solid #334155;
+  border-radius: 10px;
+
+  font: inherit;
+  font-size: 15px;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: #60a5fa;
+
+  box-shadow:
+    0 0 0 3px rgba(96, 165, 250, 0.15);
+}
+
+input::placeholder {
+  color: #64748b;
+}
+
+input[type="date"] {
+  color-scheme: dark;
+}
+
+/* ==============================
+   BUTTONS
+============================== */
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 12px 17px;
+
+  border: none;
+  border-radius: 9px;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.primary-btn {
+  flex: 1;
+  padding: 15px;
+
+  background: var(--primary);
+  color: white;
+}
+
+.primary-btn:hover {
+  background: var(--primary-hover);
+}
+
+.secondary-btn {
+  background: #334155;
+  color: white;
+}
+
+.secondary-btn:hover {
+  background: #475569;
+}
+
+.edit-btn {
+  background: #1e40af;
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #2563eb;
+}
+
+.delete-btn {
+  background: #7f1d1d;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ==============================
+   PROGRESS CHARTS
+============================== */
+
+.chart-title {
+  margin: 28px 0 14px;
+
+  color: #d4e0f0;
+  font-size: 16px;
+}
+
+.chart-container {
+  position: relative;
+
+  width: 100%;
+  height: 300px;
+
+  padding: 14px;
+
+  background: #101b2c;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.chart-message {
+  margin: 18px 0 0;
+
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ==============================
+   WORKOUT HISTORY
+============================== */
+
+#workoutList,
+#personalRecordsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.workout-card,
+.pr-card {
+  padding: 18px;
+
+  background: var(--surface-light);
+  border: 1px solid #334155;
+  border-radius: 12px;
+}
+
+.workout-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.workout-info {
+  min-width: 0;
+}
+
+.workout-info h3,
+.pr-info h3 {
+  margin: 0 0 6px;
+
+  color: var(--text);
+  font-size: 16px;
+
+  overflow-wrap: anywhere;
+}
+
+.workout-info p,
+.pr-info p {
+  margin: 0;
+
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.workout-date {
+  display: block;
+  margin-top: 7px;
+
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.workout-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  flex-shrink: 0;
+}
+
+/* ==============================
+   PERSONAL RECORDS
+============================== */
+
+.pr-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.pr-result {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.pr-result strong {
+  color: #60a5fa;
+  font-size: 21px;
+}
+
+.pr-result span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* ==============================
+   EMPTY STATES
+============================== */
+
+.empty-state {
+  padding: 25px 10px;
+
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+  padding: 15px 0;
+
+  color: #64748b;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 650px) {
+
+  body {
+    padding: 25px 15px;
+  }
+
+  .app-header h1 {
+    font-size: 23px;
+  }
+
+  .stats-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 18px 10px;
+  }
+
+  .stat-card h3 {
+    font-size: 23px;
+  }
+
+  .stat-card p {
+    font-size: 11px;
+  }
+
+  .panel {
+    padding: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-container {
+    height: 240px;
+    padding: 8px;
+  }
+
+  .workout-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .workout-actions {
+    width: 100%;
+  }
+
+  .workout-actions button {
+    flex: 1;
+  }
+
+  .pr-result strong {
+    font-size: 17px;
+  }
+
+}

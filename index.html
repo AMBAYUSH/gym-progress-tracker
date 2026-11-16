@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gym Progress Tracker</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Chart.js -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"
+    defer>
+  </script>
+
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="app-header">
+      <div class="logo">💪</div>
+
+      <div>
+        <h1>GYM TRACKER</h1>
+        <p>Train hard. Track smarter.</p>
+      </div>
+    </header>
+
+    <!-- STATISTICS -->
+    <section class="stats-grid">
+
+      <div class="stat-card">
+        <h3 id="totalWorkouts">0</h3>
+        <p>Exercises Logged</p>
+      </div>
+
+      <div class="stat-card">
+        <h3 id="totalSets">0</h3>
+        <p>Total Sets</p>
+      </div>
+
+      <div class="stat-card">
+        <h3 id="totalVolume">0</h3>
+        <p>Training Volume (lbs)</p>
+      </div>
+
+      <div class="stat-card">
+        <h3 id="averageWeight">0</h3>
+        <p>Average Weight (lbs)</p>
+      </div>
+
+      <div class="stat-card">
+        <h3 id="heaviestLift">0</h3>
+        <p>Heaviest Weight (lbs)</p>
+      </div>
+
+      <div class="stat-card">
+        <h3 id="totalPRs">0</h3>
+        <p>Exercises Tracked</p>
+      </div>
+
+    </section>
+
+    <!-- WORKOUT FORM -->
+    <section class="panel">
+
+      <div class="section-heading">
+        <h2 id="formTitle">Log Your Workout</h2>
+        <span>✚</span>
+      </div>
+
+      <form id="workoutForm">
+
+        <div class="form-group">
+          <label for="exercise">Exercise Name</label>
+
+          <input
+            type="text"
+            id="exercise"
+            placeholder="e.g. Bench Press"
+            maxlength="80"
+            required
+          >
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group">
+            <label for="sets">Sets</label>
+
+            <input
+              type="number"
+              id="sets"
+              min="1"
+              step="1"
+              placeholder="3"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="reps">Reps</label>
+
+            <input
+              type="number"
+              id="reps"
+              min="1"
+              step="1"
+              placeholder="10"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="weight">Weight (lbs)</label>
+
+            <input
+              type="number"
+              id="weight"
+              min="0"
+              step="any"
+              placeholder="135"
+              required
+            >
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="workoutDate">Workout Date</label>
+
+          <input
+            type="date"
+            id="workoutDate"
+            required
+          >
+        </div>
+
+        <div class="form-actions">
+
+          <button
+            type="submit"
+            id="submitBtn"
+            class="primary-btn">
+            + Log Workout
+          </button>
+
+          <button
+            type="button"
+            id="cancelEditBtn"
+            class="secondary-btn"
+            hidden>
+            Cancel Edit
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+    <!-- PROGRESS CHARTS -->
+    <section class="panel">
+
+      <div class="section-heading">
+        <h2>Progress Charts</h2>
+        <span>📈</span>
+      </div>
+
+      <div class="form-group">
+        <label for="chartExercise">
+          Select Exercise
+        </label>
+
+        <select id="chartExercise">
+          <option value="">
+            No exercises available
+          </option>
+        </select>
+      </div>
+
+      <h3 class="chart-title">
+        Estimated 1RM Progress
+      </h3>
+
+      <div class="chart-container">
+        <canvas id="strengthChart"></canvas>
+      </div>
+
+      <h3 class="chart-title">
+        Training Volume Progress
+      </h3>
+
+      <div class="chart-container">
+        <canvas id="volumeChart"></canvas>
+      </div>
+
+      <p id="chartMessage" class="chart-message"></p>
+
+    </section>
+
+    <!-- WORKOUT HISTORY -->
+    <section class="panel">
+
+      <div class="section-heading">
+        <h2>Workout History</h2>
+        <span>📋</span>
+      </div>
+
+      <div id="workoutList"></div>
+
+    </section>
+
+    <!-- PERSONAL RECORDS -->
+    <section class="panel">
+
+      <div class="section-heading">
+        <h2>Personal Records</h2>
+        <span>🏆</span>
+      </div>
+
+      <p class="section-description">
+        Your highest estimated one-rep max
+        for each exercise.
+      </p>
+
+      <div id="personalRecordsList"></div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        Gym Progress Tracker |
+        Built with HTML, CSS & JavaScript
+      </p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
